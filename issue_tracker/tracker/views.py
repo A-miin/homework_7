@@ -56,3 +56,15 @@ class Issue_update(View):
             return redirect('issue-view', pk=issue.id)
         return render(request, 'issue_update.html',context={'form':form, 'issue':issue})
 
+class Issue_delete(View):
+    def get(self, request, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=kwargs['pk'])
+        return render(request, 'issue_delete.html', context={'issue':issue})
+    def post(self, request, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=kwargs['pk'])
+        if request.POST.get('action')=='Да':
+            issue.delete()
+            return redirect('issue-list')
+        else:
+            return redirect('issue-view', issue.id)
+

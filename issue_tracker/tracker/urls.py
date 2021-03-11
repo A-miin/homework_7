@@ -5,6 +5,7 @@ from .views import (
     Issue_view,
     Issue_create,
     Issue_update,
+    Issue_delete,
 )
 
 urlpatterns=[
@@ -12,5 +13,6 @@ urlpatterns=[
     path('issue/<int:pk>', Issue_view.as_view(), name='issue-view'),
     path('issue/new',Issue_create.as_view(), name = 'issue-create' ),
     path('issue/<int:pk>/edit',Issue_update.as_view(), name='issue-update' ),
+    path('issue/<int:pk>/delete', Issue_delete.as_view(), name ='issue-delete'),
 
 ]
