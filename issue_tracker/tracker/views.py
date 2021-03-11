@@ -24,7 +24,6 @@ class Issue_create(View):
         return render(request, 'issue_create.html', context={'form':form})
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
-        print(request.POST)
         if form.is_valid():
             issue = Issue.objects.create(
                 summary=form.cleaned_data.get('summary'),
@@ -34,3 +33,26 @@ class Issue_create(View):
             )
             return redirect('issue-view', pk=issue.pk)
         return render(request, 'issue_create.html',context={'form':form})
+
+class Issue_update(View):
+    def get(self, request, *args, **kwargs):
+        issue = get_object_or_404(Issue, id=kwargs['pk'])
+        form = IssueForm(initial={
+            'summary':issue.summary,
+            'description':issue.description,
+            'type':issue.type,
+            'status':issue.status,
+        })
+        return render(request, 'issue_update.html', context={'form':form, 'issue':issue})
+    def post(self,request, *args, **kwargs):
+        form = IssueForm(data=request.POST)
+        issue = get_object_or_404(Issue, id=kwargs['pk'])
+        if form.is_valid():
+            issue.summary = form.cleaned_data.get('summary')
+            issue.description = form.cleaned_data.get('description')
+            issue.status = form.cleaned_data.get('status')
+            issue.type = form.cleaned_data.get('type')
+            issue.save()
+            return redirect('issue-view', pk=issue.id)
+        return render(request, 'issue_update.html',context={'form':form, 'issue':issue})
+
