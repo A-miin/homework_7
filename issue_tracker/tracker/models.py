@@ -4,11 +4,19 @@ from django.db import models
 class Type(models.Model):
     name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Тип')
 
+    class Meta:
+        verbose_name="Тип"
+        verbose_name_plural="Типы"
+
     def __str__(self):
         return self.name
 
 class Status(models.Model):
     name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Статус')
+
+    class Meta:
+        verbose_name="Статус"
+        verbose_name_plural="Статусы"
 
     def __str__(self):
         return self.name
