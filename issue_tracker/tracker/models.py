@@ -1,13 +1,11 @@
 from django.db import models
 
 # Create your models here.
-TYPE_CHOICES=[('task','задача'),('bug','ошибка'),('enhancement','улучшение')]
-STATUS_CHOICES=[('new','новый'),('in progress','в процессе'),('done','выполнено')]
 class Type(models.Model):
-    name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Тип',choices=TYPE_CHOICES, default='task')
+    name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Тип')
 
 class Status(models.Model):
-    name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Статус',choices=STATUS_CHOICES, default='new')
+    name = models.CharField(max_length=120, null=False, blank=False, verbose_name='Статус')
 
 class Issue(models.Model):
     summary = models.CharField(max_length=120, null=False, blank=False, verbose_name='Краткое описание')
