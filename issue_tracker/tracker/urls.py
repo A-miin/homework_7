@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .views import home
+from .views import IndexView, Issue_view
 
 urlpatterns=[
-    path('', home, name = 'issue-list'),
+    path('',IndexView.as_view() , name = 'issue-list'),
+    path('issue/<int:pk>', Issue_view.as_view(), name='issue-view')
 ]

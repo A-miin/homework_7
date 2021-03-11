@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Детальный просмотр {% endblock title %}
+{% block content %}
+    <div class="card text-center mt-5">
+      <div class="card-header">
+        {{ issue.status }}
+      </div>
+      <div class="card-body mb-2 mt-2">
+        <h5 class="card-title">{{ issue.summary}}</h5>
+        <p class="card-text">{{ issue.description }}</p>
+        <a href="#" class="card-link">Редактировать </a>
+        <a href="#" class="card-link text-danger">Удалить</a>
+      </div>
+      <div class="card-footer text-muted">
+        {{ issue.type }}
+      </div>
+    </div>
+{% endblock content %}
