@@ -25,12 +25,17 @@ class Issue_create(View):
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
         if form.is_valid():
+            #
+            # for type in form.cleaned_data.get('type'):
+            #     print(f'type={type}')
+            # print(form.cleaned_data.get('type'))
             issue = Issue.objects.create(
                 summary=form.cleaned_data.get('summary'),
                 description=form.cleaned_data.get('description'),
-                type=form.cleaned_data.get('type'),
                 status=form.cleaned_data.get('status'),
             )
+            issue.type.set(form.cleaned_data.get('type'))
+            issue.save()
             return redirect('issue-view', pk=issue.pk)
         return render(request, 'issue_create.html',context={'form':form})
 
@@ -40,7 +45,7 @@ class Issue_update(View):
         form = IssueForm(initial={
             'summary':issue.summary,
             'description':issue.description,
-            'type':issue.type,
+            'type':issue.type.all(),
             'status':issue.status,
         })
         return render(request, 'issue_update.html', context={'form':form, 'issue':issue})
@@ -51,7 +56,7 @@ class Issue_update(View):
             issue.summary = form.cleaned_data.get('summary')
             issue.description = form.cleaned_data.get('description')
             issue.status = form.cleaned_data.get('status')
-            issue.type = form.cleaned_data.get('type')
+            issue.type.set(form.cleaned_data.get('type'))
             issue.save()
             return redirect('issue-view', pk=issue.id)
         return render(request, 'issue_update.html',context={'form':form, 'issue':issue})

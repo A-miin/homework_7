@@ -26,7 +26,7 @@ class Issue(models.Model):
     summary = models.CharField(max_length=120, null=False, blank=False, verbose_name='Краткое описание')
     description = models.TextField(max_length=1024, verbose_name='Полное описание')
     status = models.ForeignKey('tracker.Status', on_delete=models.PROTECT, verbose_name='Статус')
-    type = models.ForeignKey('tracker.Type', on_delete=models.PROTECT, verbose_name='Тип')
+    type = models.ManyToManyField('tracker.Type', related_name="issues", verbose_name='Тип', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 

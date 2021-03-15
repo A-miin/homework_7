@@ -12,7 +12,9 @@
         <a href="{% url 'issue-delete' issue.id %}" class="card-link text-danger">Удалить</a>
       </div>
       <div class="card-footer text-muted">
-        {{ issue.type }}
+
+{#<p>Types: {% for tag in article.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>#}
+<p>Типы: {% for type in issue.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
       </div>
     </div>
 {% endblock content %}
