@@ -45,12 +45,15 @@
   "model": "tracker.issue",
   "pk": 1,
   "fields": {
-    "summary": "Тз",
-    "description": "Написать ТЗ для дипломка",
-    "status": 1,
-    "type": 3,
+    "summary": "Тз дипломка",
+    "description": "Написать ТЗ для дипломки",
+    "status": 3,
     "created_at": "2021-03-11T08:24:12.455Z",
-    "updated_at": "2021-03-11T08:24:12.455Z"
+    "updated_at": "2021-03-15T11:17:51.183Z",
+    "type": [
+      1,
+      2
+    ]
   }
 },
 {
@@ -60,9 +63,9 @@
     "summary": "Тз",
     "description": "Написать тз для стажа",
     "status": 1,
-    "type": 2,
     "created_at": "2021-03-11T08:24:32.027Z",
-    "updated_at": "2021-03-11T08:24:32.027Z"
+    "updated_at": "2021-03-11T08:24:32.027Z",
+    "type": []
   }
 },
 {
@@ -72,9 +75,9 @@
     "summary": "Исправить базу",
     "description": "Исправить базу, добавить поле курс для урока",
     "status": 1,
-    "type": 3,
     "created_at": "2021-03-11T08:25:34.406Z",
-    "updated_at": "2021-03-11T08:25:34.406Z"
+    "updated_at": "2021-03-11T08:25:34.406Z",
+    "type": []
   }
 },
 {
@@ -84,9 +87,9 @@
     "summary": "Ошибка в базе",
     "description": "Ошибка в базе проекта стажа",
     "status": 2,
-    "type": 2,
     "created_at": "2021-03-11T08:26:06.495Z",
-    "updated_at": "2021-03-11T08:26:06.495Z"
+    "updated_at": "2021-03-11T08:26:06.495Z",
+    "type": []
   }
 },
 {
@@ -96,9 +99,9 @@
     "summary": "Гант",
     "description": "Диаграмма Ганта для дип",
     "status": 3,
-    "type": 1,
     "created_at": "2021-03-11T08:26:43.673Z",
-    "updated_at": "2021-03-11T08:26:43.673Z"
+    "updated_at": "2021-03-11T08:26:43.673Z",
+    "type": []
   }
 },
 {
@@ -108,9 +111,125 @@
     "summary": "Пройти тест",
     "description": "сделать домашку по криптографии",
     "status": 1,
-    "type": 1,
     "created_at": "2021-03-11T08:27:14.218Z",
-    "updated_at": "2021-03-11T08:27:14.218Z"
+    "updated_at": "2021-03-11T08:27:14.218Z",
+    "type": []
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 7,
+  "fields": {
+    "summary": "Исправить базу",
+    "description": ";mk ;km",
+    "status": 1,
+    "created_at": "2021-03-11T10:27:33.439Z",
+    "updated_at": "2021-03-11T10:27:33.439Z",
+    "type": []
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 9,
+  "fields": {
+    "summary": "Ошибка в базе",
+    "description": "аа4а4",
+    "status": 2,
+    "created_at": "2021-03-11T10:44:46.328Z",
+    "updated_at": "2021-03-11T10:44:46.328Z",
+    "type": []
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 10,
+  "fields": {
+    "summary": "new",
+    "description": "sb",
+    "status": 1,
+    "created_at": "2021-03-15T11:08:48.998Z",
+    "updated_at": "2021-03-15T11:08:48.999Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 11,
+  "fields": {
+    "summary": "new",
+    "description": "sb",
+    "status": 1,
+    "created_at": "2021-03-15T11:10:19.156Z",
+    "updated_at": "2021-03-15T11:16:57.524Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 12,
+  "fields": {
+    "summary": "for testing NEWWWW NE",
+    "description": "test new",
+    "status": 3,
+    "created_at": "2021-03-15T11:17:22.179Z",
+    "updated_at": "2021-03-18T10:53:46.898Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 14,
+  "fields": {
+    "summary": "neww",
+    "description": "l,;,;;[;plolo",
+    "status": 2,
+    "created_at": "2021-03-18T10:37:54.834Z",
+    "updated_at": "2021-03-18T10:38:10.948Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 16,
+  "fields": {
+    "summary": "lklnlknlknlkl;",
+    "description": "lkm';",
+    "status": 1,
+    "created_at": "2021-03-18T11:43:42.095Z",
+    "updated_at": "2021-03-18T11:43:42.431Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 17,
+  "fields": {
+    "summary": "sd54",
+    "description": "",
+    "status": 1,
+    "created_at": "2021-03-18T11:57:07.127Z",
+    "updated_at": "2021-03-18T12:20:00.235Z",
+    "type": [
+      1
+    ]
   }
 },
 {
