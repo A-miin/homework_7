@@ -10,7 +10,7 @@
   "model": "tracker.type",
   "pk": 2,
   "fields": {
-    "name": "Ошибка"
+    "name": "Баг"
   }
 },
 {
@@ -46,10 +46,10 @@
   "pk": 1,
   "fields": {
     "summary": "Тз дипломка",
-    "description": "Написать ТЗ для дипломки",
+    "description": "Тз дипломка",
     "status": 3,
     "created_at": "2021-03-11T08:24:12.455Z",
-    "updated_at": "2021-03-15T11:17:51.183Z",
+    "updated_at": "2021-03-22T12:09:11.696Z",
     "type": [
       1,
       2
@@ -60,12 +60,16 @@
   "model": "tracker.issue",
   "pk": 2,
   "fields": {
-    "summary": "Тз",
+    "summary": "Тз для стаж",
     "description": "Написать тз для стажа",
     "status": 1,
     "created_at": "2021-03-11T08:24:32.027Z",
-    "updated_at": "2021-03-11T08:24:32.027Z",
-    "type": []
+    "updated_at": "2021-03-22T11:21:07.258Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
   }
 },
 {
@@ -76,20 +80,24 @@
     "description": "Исправить базу, добавить поле курс для урока",
     "status": 1,
     "created_at": "2021-03-11T08:25:34.406Z",
-    "updated_at": "2021-03-11T08:25:34.406Z",
-    "type": []
+    "updated_at": "2021-03-22T11:21:20.255Z",
+    "type": [
+      2
+    ]
   }
 },
 {
   "model": "tracker.issue",
   "pk": 4,
   "fields": {
-    "summary": "Ошибка в базе",
-    "description": "Ошибка в базе проекта стажа",
+    "summary": "Баг в базе",
+    "description": "баг в базе проекта стажа",
     "status": 2,
     "created_at": "2021-03-11T08:26:06.495Z",
-    "updated_at": "2021-03-11T08:26:06.495Z",
-    "type": []
+    "updated_at": "2021-03-22T11:27:19.028Z",
+    "type": [
+      1
+    ]
   }
 },
 {
@@ -100,8 +108,10 @@
     "description": "Диаграмма Ганта для дип",
     "status": 3,
     "created_at": "2021-03-11T08:26:43.673Z",
-    "updated_at": "2021-03-11T08:26:43.673Z",
-    "type": []
+    "updated_at": "2021-03-22T11:21:51.061Z",
+    "type": [
+      1
+    ]
   }
 },
 {
@@ -110,10 +120,12 @@
   "fields": {
     "summary": "Пройти тест",
     "description": "сделать домашку по криптографии",
-    "status": 1,
+    "status": 3,
     "created_at": "2021-03-11T08:27:14.218Z",
-    "updated_at": "2021-03-11T08:27:14.218Z",
-    "type": []
+    "updated_at": "2021-03-22T11:22:03.513Z",
+    "type": [
+      1
+    ]
   }
 },
 {
@@ -122,113 +134,112 @@
   "fields": {
     "summary": "Исправить базу",
     "description": ";mk ;km",
-    "status": 1,
-    "created_at": "2021-03-11T10:27:33.439Z",
-    "updated_at": "2021-03-11T10:27:33.439Z",
-    "type": []
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 9,
-  "fields": {
-    "summary": "Ошибка в базе",
-    "description": "аа4а4",
-    "status": 2,
-    "created_at": "2021-03-11T10:44:46.328Z",
-    "updated_at": "2021-03-11T10:44:46.328Z",
-    "type": []
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 10,
-  "fields": {
-    "summary": "new",
-    "description": "sb",
-    "status": 1,
-    "created_at": "2021-03-15T11:08:48.998Z",
-    "updated_at": "2021-03-15T11:08:48.999Z",
-    "type": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 11,
-  "fields": {
-    "summary": "new",
-    "description": "sb",
-    "status": 1,
-    "created_at": "2021-03-15T11:10:19.156Z",
-    "updated_at": "2021-03-15T11:16:57.524Z",
-    "type": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 12,
-  "fields": {
-    "summary": "for testing NEWWWW NE",
-    "description": "test new",
     "status": 3,
-    "created_at": "2021-03-15T11:17:22.179Z",
-    "updated_at": "2021-03-18T10:53:46.898Z",
+    "created_at": "2021-03-11T10:27:33.439Z",
+    "updated_at": "2021-03-22T12:37:15.424Z",
     "type": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 14,
-  "fields": {
-    "summary": "neww",
-    "description": "l,;,;;[;plolo",
-    "status": 2,
-    "created_at": "2021-03-18T10:37:54.834Z",
-    "updated_at": "2021-03-18T10:38:10.948Z",
-    "type": [
-      1,
       2
     ]
   }
 },
 {
   "model": "tracker.issue",
-  "pk": 16,
+  "pk": 18,
   "fields": {
-    "summary": "lklnlknlknlkl;",
-    "description": "lkm';",
-    "status": 1,
-    "created_at": "2021-03-18T11:43:42.095Z",
-    "updated_at": "2021-03-18T11:43:42.431Z",
-    "type": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 17,
-  "fields": {
-    "summary": "sd54",
+    "summary": "тест",
     "description": "",
-    "status": 1,
-    "created_at": "2021-03-18T11:57:07.127Z",
-    "updated_at": "2021-03-18T12:20:00.235Z",
+    "status": 3,
+    "created_at": "2021-03-25T09:34:01.350Z",
+    "updated_at": "2021-03-25T09:34:01.834Z",
     "type": [
       1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 19,
+  "fields": {
+    "summary": "тест1",
+    "description": "",
+    "status": 3,
+    "created_at": "2021-03-25T09:34:16.486Z",
+    "updated_at": "2021-03-25T09:34:16.825Z",
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 20,
+  "fields": {
+    "summary": "тест2",
+    "description": "",
+    "status": 2,
+    "created_at": "2021-03-25T09:34:25.819Z",
+    "updated_at": "2021-03-25T09:34:26.113Z",
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 21,
+  "fields": {
+    "summary": "тест",
+    "description": "",
+    "status": 2,
+    "created_at": "2021-03-25T09:34:36.672Z",
+    "updated_at": "2021-03-25T09:34:37.023Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 22,
+  "fields": {
+    "summary": "тест3",
+    "description": "",
+    "status": 2,
+    "created_at": "2021-03-25T09:34:48.441Z",
+    "updated_at": "2021-03-25T09:34:48.811Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 23,
+  "fields": {
+    "summary": "тест4",
+    "description": "",
+    "status": 2,
+    "created_at": "2021-03-25T09:35:05.809Z",
+    "updated_at": "2021-03-25T09:35:06.121Z",
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 24,
+  "fields": {
+    "summary": "тест5",
+    "description": "",
+    "status": 2,
+    "created_at": "2021-03-25T09:35:15.508Z",
+    "updated_at": "2021-03-25T09:35:15.820Z",
+    "type": [
+      1,
+      2
     ]
   }
 },
@@ -237,7 +248,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$lcRel05LuNnh$AJAimTQaFt12x1xBPbKi/WI6+00nt4qH6EM7792IyCY=",
-    "last_login": "2021-03-11T08:16:47.224Z",
+    "last_login": "2021-03-22T10:52:47.260Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
