@@ -1,17 +1,50 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from django.views.generic import View, TemplateView, FormView
+from django.views.generic import View, TemplateView, FormView, ListView
 from django.urls import reverse
+from django.db.models import Q
+from django.utils.http import urlencode
 
 from .models import Issue
-from .issue_form import IssueForm
+from .issue_form import IssueForm, SearchForm
 
 
 # Create your views here.
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'index.html'
+    model = Issue
+    context_object_name = 'issues'
+    ordering = ('updated_at')
+    paginate_by=10
+    paginate_orphans=2
+
+    def get(self,request, **kwargs):
+        self.form = SearchForm(request.GET)
+        self.search_data = self.get_search_data()
+        return super(IndexView, self).get(request, **kwargs)
+
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.search_data:
+            queryset = queryset.filter(
+                Q(summary__icontains=self.search_data) |
+                Q(description__icontains=self.search_data))
+        return queryset
+
+    def get_search_data(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data['search_value']
+        return None
+
     def get_context_data(self, **kwargs):
-        kwargs['issues']=Issue.objects.all()
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = self.form
+
+        if self.search_data:
+            context['query'] = urlencode({'search_value': self.search_data})
+
+        return context
 
 class Issue_view(TemplateView):
     template_name = 'issue_view.html'

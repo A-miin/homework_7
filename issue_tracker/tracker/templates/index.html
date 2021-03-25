@@ -2,16 +2,25 @@
 {% block title %}Список задач{% endblock title %}
 {% block content %}
     <div class="row">
+    {% if not issues %}
+        <h2>НЕТ проблем</h2>
+    {% else %}
+        {% include "partial/search_form.html" %}
+    {% endif %}
         {% for issue in issues %}
           <div class="col-sm-6 mt-3 mb-3">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">{{ issue.status }}</h5>
+                <h5 class="card-title">{{ issue.id }}.{{ issue.status }}-{{ issue.status.id }}</h5>
                 <p class="card-text">{{ issue.summary }}</p>
+                  <p>Типы: {% for type in issue.type.all %}{{ type.name }}-{{ type.id }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                 <a href="{% url "issue-view" issue.id %}" class="btn btn-primary">Детальный просмотр</a>
               </div>
             </div>
           </div>
         {% endfor %}
+        <div class="d-flex justify-content-center">
+            {% include 'partial/paginate.html' %}
+        </div>
     </div>
 {% endblock content %}
