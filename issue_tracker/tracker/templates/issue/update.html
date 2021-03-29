@@ -2,6 +2,6 @@
 {% block title %}Редактирование{% endblock title %}
 {% block content %}
     <form action="{% url 'issue-update' issue.id %}" method="post">
-        {% include 'issue/form.html' with button_text="Сохранить" %}
+        {% include 'issue/../partial/form.html' with button_text="Сохранить" %}
     </form>
 {% endblock content %}

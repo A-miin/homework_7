@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from django.views.generic import View, TemplateView, FormView, ListView
+from django.views.generic import View, TemplateView, FormView, ListView, DetailView, CreateView
 from django.urls import reverse
 from django.db.models import Q
 from django.utils.http import urlencode
 
 from .models import Issue, Project
-from .forms import IssueForm, SearchForm
+from .forms import IssueForm, SearchForm, ProjectForm
 
 
 # Create your views here.
@@ -85,8 +85,59 @@ class Issue_view(TemplateView):
         kwargs['issue']=get_object_or_404(Issue, pk=kwargs.get('pk'))
         return super().get_context_data(**kwargs)
 
-class Project_view(TemplateView):
-    template_name = 'project/'
+class ProjectView(DetailView):
+    template_name = 'project/view.html'
+    queryset = Project.objects.all()
+    context_object_name = 'project'
+
+class ProjectCreateView(CreateView):
+    template_name = 'project/create.html'
+    model = Project
+    form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse('project-view', kwargs={'pk': self.object.pk})
+
+class ProjectUpdateView(FormView):
+    form_class = ProjectForm
+    template_name = 'project/update.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.project = self.get_object()
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['instance']=self.project
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['project'] = self.project
+        return context
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def get_object(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        return project
+
+    def get_success_url(self):
+        return reverse('project-view', kwargs={'pk':self.kwargs.get('pk')})
+
+class ProjectDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        project = get_object_or_404(Project, id=kwargs['pk'])
+        return render(request, 'project/delete.html', context={'project':project})
+    def post(self, request, *args, **kwargs):
+        project = get_object_or_404(Project, id=kwargs['pk'])
+        if request.POST.get('action')=='Да':
+            project.delete()
+            return redirect('project-list')
+        else:
+            return redirect('project-view', project.id)
 
 class IssueCreateView(FormView):
     form_class = IssueForm
@@ -97,7 +148,8 @@ class IssueCreateView(FormView):
         self.issue = Issue.objects.create(
             summary=form.cleaned_data.get('summary'),
             description=form.cleaned_data.get('description'),
-            status=form.cleaned_data.get('status')
+            status=form.cleaned_data.get('status'),
+            project=get_object_or_404(Project, id=self.kwargs.get('pk'))
         )
         self.issue.type.set(types)
         self.issue.save()

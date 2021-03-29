@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Детальный просмотр {% endblock title %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url "issue-create" project.id %}">New issue</a>
+    </li>
+{% endblock nav %}
+{% block content %}
+    <div class="card text-center mt-5">
+      <div class="card-header">
+        {{ project.begin_date }}---{{ project.end_date }}
+      </div>
+      <div class="card-body mb-2 mt-2">
+        <h5 class="card-title">{{ project.name}}</h5>
+          <p class="card-text">{{ project.description }}</p>
+        <a href="{% url 'project-update' project.id %}" class="card-link">Редактировать </a>
+        <a href="{% url 'project-delete' project.id %}" class="card-link text-danger">Удалить</a>
+
+        {% include 'issue/list.html' with issues=project.issues.all %}
+
+
+      </div>
+    </div>
+{% endblock content %}

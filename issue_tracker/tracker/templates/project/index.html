@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Список задач{% endblock title %}
+{% block title %}Список проектов{% endblock title %}
 {% block content %}
     <div class="row">
     {% if not projects %}
@@ -13,7 +13,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ project.id }}.{{ project.begin_date }}-{{ project.end_date }}</h5>
                 <p class="card-text">{{ project.name }}</p>
-                 <a href="{% url "issue-view" project.id %}" class="btn btn-primary">Детальный просмотр</a>
+                 <a href="{% url "project-view" project.id %}" class="btn btn-primary">Детальный просмотр</a>
               </div>
             </div>
           </div>
