@@ -53,5 +53,5 @@ class Project(models.Model):
         verbose_name_plural = "Проекты"
 
     def __str__(self):
-        return f'{self.name}: {self.begin_date}-{self.end_date}'
+        return f'{self.name}: {self.begin_date}/{self.end_date}'
 

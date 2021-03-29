@@ -48,6 +48,7 @@
     "summary": "Тз дипломка",
     "description": "Тз дипломка",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-11T08:24:12.455Z",
     "updated_at": "2021-03-22T12:09:11.696Z",
     "type": [
@@ -63,6 +64,7 @@
     "summary": "Тз для стаж",
     "description": "Написать тз для стажа",
     "status": 1,
+    "project": 1,
     "created_at": "2021-03-11T08:24:32.027Z",
     "updated_at": "2021-03-22T11:21:07.258Z",
     "type": [
@@ -79,6 +81,7 @@
     "summary": "Исправить базу",
     "description": "Исправить базу, добавить поле курс для урока",
     "status": 1,
+    "project": 1,
     "created_at": "2021-03-11T08:25:34.406Z",
     "updated_at": "2021-03-22T11:21:20.255Z",
     "type": [
@@ -93,6 +96,7 @@
     "summary": "Баг в базе",
     "description": "баг в базе проекта стажа",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-11T08:26:06.495Z",
     "updated_at": "2021-03-22T11:27:19.028Z",
     "type": [
@@ -107,6 +111,7 @@
     "summary": "Гант",
     "description": "Диаграмма Ганта для дип",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-11T08:26:43.673Z",
     "updated_at": "2021-03-22T11:21:51.061Z",
     "type": [
@@ -121,6 +126,7 @@
     "summary": "Пройти тест",
     "description": "сделать домашку по криптографии",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-11T08:27:14.218Z",
     "updated_at": "2021-03-22T11:22:03.513Z",
     "type": [
@@ -135,6 +141,7 @@
     "summary": "Исправить базу",
     "description": ";mk ;km",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-11T10:27:33.439Z",
     "updated_at": "2021-03-22T12:37:15.424Z",
     "type": [
@@ -149,6 +156,7 @@
     "summary": "тест",
     "description": "",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-25T09:34:01.350Z",
     "updated_at": "2021-03-25T09:34:01.834Z",
     "type": [
@@ -163,6 +171,7 @@
     "summary": "тест1",
     "description": "",
     "status": 3,
+    "project": 1,
     "created_at": "2021-03-25T09:34:16.486Z",
     "updated_at": "2021-03-25T09:34:16.825Z",
     "type": [
@@ -177,6 +186,7 @@
     "summary": "тест2",
     "description": "",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-25T09:34:25.819Z",
     "updated_at": "2021-03-25T09:34:26.113Z",
     "type": [
@@ -191,6 +201,7 @@
     "summary": "тест",
     "description": "",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-25T09:34:36.672Z",
     "updated_at": "2021-03-25T09:34:37.023Z",
     "type": [
@@ -206,6 +217,7 @@
     "summary": "тест3",
     "description": "",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-25T09:34:48.441Z",
     "updated_at": "2021-03-25T09:34:48.811Z",
     "type": [
@@ -221,6 +233,7 @@
     "summary": "тест4",
     "description": "",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-25T09:35:05.809Z",
     "updated_at": "2021-03-25T09:35:06.121Z",
     "type": [
@@ -235,6 +248,7 @@
     "summary": "тест5",
     "description": "",
     "status": 2,
+    "project": 1,
     "created_at": "2021-03-25T09:35:15.508Z",
     "updated_at": "2021-03-25T09:35:15.820Z",
     "type": [
@@ -244,11 +258,21 @@
   }
 },
 {
+  "model": "tracker.project",
+  "pk": 1,
+  "fields": {
+    "begin_date": "2016-09-05",
+    "end_date": "2021-07-08",
+    "name": "Как закончить универ и не сойти с ума",
+    "description": "Задачи для ежедневных нервных срывов"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$lcRel05LuNnh$AJAimTQaFt12x1xBPbKi/WI6+00nt4qH6EM7792IyCY=",
-    "last_login": "2021-03-22T10:52:47.260Z",
+    "last_login": "2021-03-29T09:11:24.876Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
