@@ -21,6 +21,7 @@ class IssueAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'begin_date', 'end_date']
     fields = ['id', 'name','description', 'begin_date', 'end_date']
+    readonly_fields = ['id']
 
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(Type, TypeAdmin)

@@ -2,6 +2,6 @@
 {% block title %}Создать{% endblock title %}
 {% block content %}
     <form action="{% url 'issue-create' %}" method="post">
-        {% include 'issue_form.html' with button_text="Создать" %}
+        {% include 'issue/form.html' with button_text="Создать" %}
     </form>
 {% endblock content %}

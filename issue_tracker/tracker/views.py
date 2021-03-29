@@ -4,13 +4,13 @@ from django.urls import reverse
 from django.db.models import Q
 from django.utils.http import urlencode
 
-from .models import Issue
-from .issue_form import IssueForm, SearchForm
+from .models import Issue, Project
+from .forms import IssueForm, SearchForm
 
 
 # Create your views here.
 class IndexView(ListView):
-    template_name = 'index.html'
+    template_name = 'issue/index.html'
     model = Issue
     context_object_name = 'issues'
     ordering = ('updated_at')
@@ -21,7 +21,6 @@ class IndexView(ListView):
         self.form = SearchForm(request.GET)
         self.search_data = self.get_search_data()
         return super(IndexView, self).get(request, **kwargs)
-
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -46,17 +45,52 @@ class IndexView(ListView):
 
         return context
 
+class IndexProjectView(ListView):
+    template_name = 'project/index.html'
+    model = Project
+    context_object_name = 'projects'
+
+    def get(self,request, **kwargs):
+        self.form = SearchForm(request.GET)
+        self.search_data = self.get_search_data()
+        return super(IndexProjectView, self).get(request, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.search_data:
+            queryset = queryset.filter(
+                Q(name__icontains=self.search_data) |
+                Q(description__icontains=self.search_data))
+        return queryset
+
+    def get_search_data(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data['search_value']
+        return None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = self.form
+
+        if self.search_data:
+            context['query'] = urlencode({'search_value': self.search_data})
+
+        return context
+
 class Issue_view(TemplateView):
-    template_name = 'issue_view.html'
+    template_name = 'issue/view.html'
 
     def get_context_data(self, **kwargs):
         kwargs['issue']=get_object_or_404(Issue, pk=kwargs.get('pk'))
         return super().get_context_data(**kwargs)
 
+class Project_view(TemplateView):
+    template_name = 'project/'
 
 class IssueCreateView(FormView):
     form_class = IssueForm
-    template_name = 'issue_create.html'
+    template_name = 'issue/create.html'
 
     def form_valid(self, form):
         types=form.cleaned_data.pop('type')
@@ -75,7 +109,7 @@ class IssueCreateView(FormView):
 
 class IssueUpdateView(FormView):
     form_class = IssueForm
-    template_name = 'issue_update.html'
+    template_name = 'issue/update.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.issue = self.get_object()
@@ -107,7 +141,7 @@ class IssueUpdateView(FormView):
 class Issue_delete(View):
     def get(self, request, *args, **kwargs):
         issue = get_object_or_404(Issue, id=kwargs['pk'])
-        return render(request, 'issue_delete.html', context={'issue':issue})
+        return render(request, 'issue/delete.html', context={'issue':issue})
     def post(self, request, *args, **kwargs):
         issue = get_object_or_404(Issue, id=kwargs['pk'])
         if request.POST.get('action')=='Да':
