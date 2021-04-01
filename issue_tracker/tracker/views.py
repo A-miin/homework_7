@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
+from django.http import HttpResponseRedirect
 from django.views.generic import (
     View,
     TemplateView,
@@ -25,6 +26,7 @@ class IndexView(ListView):
     ordering = ('updated_at')
     paginate_by=10
     paginate_orphans=2
+
 
     def get(self,request, **kwargs):
         self.form = SearchForm(request.GET)
@@ -65,12 +67,13 @@ class IndexProjectView(ListView):
         return super(IndexProjectView, self).get(request, **kwargs)
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = Project.objects.filter(is_deleted=False)
 
         if self.search_data:
             queryset = queryset.filter(
                 Q(name__icontains=self.search_data) |
-                Q(description__icontains=self.search_data))
+                Q(description__icontains=self.search_data) |
+                Q(is_deleted=False))
         return queryset
 
     def get_search_data(self):
@@ -96,7 +99,7 @@ class Issue_view(TemplateView):
 
 class ProjectView(DetailView):
     template_name = 'project/view.html'
-    queryset = Project.objects.all()
+    queryset = Project.objects.filter(is_deleted=False)
     context_object_name = 'project'
 
 class ProjectCreateView(CreateView):
@@ -116,11 +119,28 @@ class ProjectUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('project-view', kwargs={'pk':self.object.pk})
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_deleted=False)
+        return queryset
+
 class ProjectDeleteView(DeleteView):
     template_name = 'project/delete.html'
     model = Project
     context_object_name = 'project'
     success_url = reverse_lazy('project-list')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.is_deleted = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_deleted=False)
+        return queryset
 
 class IssueCreateView(FormView):
     form_class = IssueForm

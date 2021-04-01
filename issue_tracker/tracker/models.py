@@ -47,6 +47,7 @@ class Project(models.Model):
     end_date = models.DateField(verbose_name="Дата конца", null=True, blank=True)
     name = models.CharField(max_length=120, verbose_name="Название")
     description = models.TextField(max_length=3072, verbose_name="Описание")
+    is_deleted = models.BooleanField(default=False)
 
     class Meta:
         verbose_name="Проект"
