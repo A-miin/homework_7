@@ -136,98 +136,6 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 7,
-  "fields": {
-    "summary": "Исправить базу",
-    "description": ";mk ;km",
-    "status": 3,
-    "project": 1,
-    "created_at": "2021-03-11T10:27:33.439Z",
-    "updated_at": "2021-03-22T12:37:15.424Z",
-    "type": [
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 18,
-  "fields": {
-    "summary": "тест",
-    "description": "",
-    "status": 3,
-    "project": 1,
-    "created_at": "2021-03-25T09:34:01.350Z",
-    "updated_at": "2021-03-25T09:34:01.834Z",
-    "type": [
-      1
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 19,
-  "fields": {
-    "summary": "тест1",
-    "description": "",
-    "status": 3,
-    "project": 1,
-    "created_at": "2021-03-25T09:34:16.486Z",
-    "updated_at": "2021-03-25T09:34:16.825Z",
-    "type": [
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 22,
-  "fields": {
-    "summary": "тест3",
-    "description": "",
-    "status": 2,
-    "project": 1,
-    "created_at": "2021-03-25T09:34:48.441Z",
-    "updated_at": "2021-03-25T09:34:48.811Z",
-    "type": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 23,
-  "fields": {
-    "summary": "тест4",
-    "description": "",
-    "status": 2,
-    "project": 1,
-    "created_at": "2021-03-25T09:35:05.809Z",
-    "updated_at": "2021-03-25T09:35:06.121Z",
-    "type": [
-      1
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 24,
-  "fields": {
-    "summary": "тест5",
-    "description": "",
-    "status": 2,
-    "project": 1,
-    "created_at": "2021-03-25T09:35:15.508Z",
-    "updated_at": "2021-03-25T09:35:15.820Z",
-    "type": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
   "pk": 25,
   "fields": {
     "summary": "Тз дипломка",
@@ -265,22 +173,42 @@
 },
 {
   "model": "tracker.project",
-  "pk": 3,
+  "pk": 8,
   "fields": {
     "begin_date": "2020-09-14",
     "end_date": "2021-08-01",
-    "name": "Окрошка",
-    "description": "jtrjj"
+    "name": "Амин",
+    "description": ";l,"
   }
 },
 {
   "model": "tracker.project",
-  "pk": 4,
+  "pk": 9,
   "fields": {
     "begin_date": "2020-09-14",
     "end_date": "2021-08-01",
-    "name": "Окрошка",
-    "description": "jtrjj"
+    "name": "Амин516",
+    "description": ";l,"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 10,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": "2021-08-01",
+    "name": "Амин 1",
+    "description": ";l,"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 13,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "Вася",
+    "description": "kjkbjb"
   }
 },
 {
