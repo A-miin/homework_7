@@ -89,22 +89,14 @@ class IssueCreateView(CreateView):
     form_class = IssueForm
 
     def form_valid(self, form):
-        print("bbff")
-        # iss = form.save(commit=False)
-        # print(iss)
-        types=form.cleaned_data.pop('type')
-        self.issue = Issue.objects.create(
-            summary=form.cleaned_data.get('summary'),
-            description=form.cleaned_data.get('description'),
-            status=form.cleaned_data.get('status'),
-            project=get_object_or_404(Project, id=self.kwargs.get('pk'))
-        )
-        self.issue.type.set(types)
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        # types=form.cleaned_data.pop('type')
+
+        self.issue = form.save(commit=False)
+        self.issue.project = project
         self.issue.save()
-        print(self.issue.project)
-        print('saved')
-        print('saved')
-        print('saved')
+        # self.issue.type.set(types)
+        form.save_m2m()
         return self.get_success_url()
 
     def get_success_url(self):
