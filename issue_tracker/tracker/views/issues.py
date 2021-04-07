@@ -13,6 +13,7 @@ from django.views.generic import (
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from tracker.models import Issue, Project
 from tracker.forms import IssueForm, SearchForm, ProjectForm
@@ -63,27 +64,7 @@ class IssueView(DetailView):
     queryset = Issue.objects.all()
     context_object_name = 'issue'
 
-
-class issueCreateView(FormView):
-    form_class = IssueForm
-    template_name = 'issue/create.html'
-
-    def form_valid(self, form):
-        types=form.cleaned_data.pop('type')
-        self.issue = Issue.objects.create(
-            summary=form.cleaned_data.get('summary'),
-            description=form.cleaned_data.get('description'),
-            status=form.cleaned_data.get('status'),
-            project=get_object_or_404(Project, id=self.kwargs.get('pk'))
-        )
-        self.issue.type.set(types)
-        self.issue.save()
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('issue-view', kwargs={'pk':self.issue.pk})
-
-class IssueCreateView(CreateView):
+class IssueCreateView(LoginRequiredMixin, CreateView):
     template_name = 'issue/create.html'
     model = Issue
     form_class = IssueForm
@@ -103,7 +84,7 @@ class IssueCreateView(CreateView):
         return redirect('issue-view', pk = self.issue.id)
 
 
-class IssueUpdateView(UpdateView):
+class IssueUpdateView(LoginRequiredMixin,UpdateView):
     form_class = IssueForm
     template_name = 'issue/update.html'
     model = Issue
@@ -112,7 +93,7 @@ class IssueUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('issue-view', kwargs={'pk': self.object.pk})
 
-class IssueDeleteView(DeleteView):
+class IssueDeleteView(LoginRequiredMixin,DeleteView):
     model = Issue
     template_name = 'issue/delete.html'
     context_object_name = 'issue'

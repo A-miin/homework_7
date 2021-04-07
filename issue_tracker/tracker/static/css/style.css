@@ -52,3 +52,11 @@ body {
     text-align: center;
     border: solid 1px gray;
 }
+.menu-right {
+    float: right;
+}
+
+
+.menu {
+    display: block;
+}

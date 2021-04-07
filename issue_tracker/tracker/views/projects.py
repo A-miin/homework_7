@@ -10,6 +10,7 @@ from django.views.generic import (
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from tracker.models import Issue, Project
 from tracker.forms import IssueForm, SearchForm, ProjectForm
@@ -56,7 +57,7 @@ class ProjectView(DetailView):
     queryset = Project.objects.filter(is_deleted=False)
     context_object_name = 'project'
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'project/create.html'
     model = Project
     form_class = ProjectForm
@@ -64,7 +65,7 @@ class ProjectCreateView(CreateView):
     def get_success_url(self):
         return reverse('project-view', kwargs={'pk': self.object.pk})
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
     model = Project
     template_name = 'project/update.html'
@@ -78,7 +79,7 @@ class ProjectUpdateView(UpdateView):
         queryset = queryset.filter(is_deleted=False)
         return queryset
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'project/delete.html'
     model = Project
     context_object_name = 'project'
