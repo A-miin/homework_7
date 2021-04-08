@@ -13,11 +13,11 @@ def login_view(request, *args, **kwargs):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('project-list')
+            return redirect('tracker:project-list')
         else:
             context['has_error']=True
     return render(request, 'registration/login.html', context=context)
 
 def logout_view(request, *args, **kwargs):
     logout(request)
-    return redirect('issue-list')
+    return redirect('tracker:issue-list')

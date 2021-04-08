@@ -2,7 +2,7 @@
 {% block title %} Детальный просмотр {% endblock title %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link active" href="{% url "issue-create" project.id %}">New issue</a>
+        <a class="nav-link active" href="{% url "tracker:issue-create" project.id %}">New issue</a>
     </li>
 {% endblock nav %}
 {% block content %}
@@ -13,8 +13,8 @@
       <div class="card-body mb-2 mt-2">
         <h5 class="card-title">{{ project.name}}</h5>
           <p class="card-text">{{ project.description }}</p>
-        <a href="{% url 'project-update' project.id %}" class="card-link">Редактировать </a>
-        <a href="{% url 'project-delete' project.id %}" class="card-link text-danger">Удалить</a>
+        <a href="{% url 'tracker:project-update' project.id %}" class="card-link">Редактировать </a>
+        <a href="{% url 'tracker:project-delete' project.id %}" class="card-link text-danger">Удалить</a>
 
         {% include 'issue/list.html' with issues=project.issues.all %}
 

@@ -81,7 +81,7 @@ class IssueCreateView(LoginRequiredMixin, CreateView):
         return self.get_success_url()
 
     def get_success_url(self):
-        return redirect('issue-view', pk = self.issue.id)
+        return redirect('tracker:issue-view', pk = self.issue.id)
 
 
 class IssueUpdateView(LoginRequiredMixin,UpdateView):
@@ -91,7 +91,7 @@ class IssueUpdateView(LoginRequiredMixin,UpdateView):
     context_object_name = 'issue'
 
     def get_success_url(self):
-        return reverse('issue-view', kwargs={'pk': self.object.pk})
+        return reverse('tracker:issue-view', kwargs={'pk': self.object.pk})
 
 class IssueDeleteView(LoginRequiredMixin,DeleteView):
     model = Issue
@@ -100,5 +100,5 @@ class IssueDeleteView(LoginRequiredMixin,DeleteView):
 
     def get_success_url(self):
         print(self.object.project.pk)
-        return reverse('project-view', kwargs={'pk':self.object.project.pk})
+        return reverse('tracker:project-view', kwargs={'pk':self.object.project.pk})
 

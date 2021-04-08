@@ -12,23 +12,23 @@
          <nav>
             <ul class="nav justify-content-center">
               <li class="nav-item">
-                <a class="nav-link active" href="{% url "project-list" %}">Project list</a>
+                <a class="nav-link active" href="{% url "tracker:project-list" %}">Project list</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{% url "issue-list" %}">Issues list</a>
+                <a class="nav-link active" href="{% url "tracker:issue-list" %}">Issues list</a>
               </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link active" href="{% url "project-create" %}">New project</a>
+                <a class="nav-link active" href="{% url "tracker:project-create" %}">New project</a>
               </li>
                 {% block nav %}
                 {% endblock nav %}
                 <li class="nav-item">
-                <a class="nav-link active" href="{% url "logout" %}">Logout</a>
+                <a class="nav-link active" href="{% url "accounts:logout" %}">Logout</a>
               </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link active" href="{% url "login" %}">Вход</a>
+                <a class="nav-link active" href="{% url "accounts:login" %}">Вход</a>
               </li>
             {% endif %}
             </ul>

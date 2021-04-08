@@ -9,7 +9,7 @@
                 <h5 class="card-title">{{ issue.id }}.{{ issue.status }}-{{ issue.status.id }}</h5>
                 <p class="card-text">{{ issue.summary }}</p>
                   <p>Типы: {% for type in issue.type.all %}{{ type.name }}-{{ type.id }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <a href="{% url "issue-view" issue.id %}" class="btn btn-primary">Детальный просмотр</a>
+                <a href="{% url "tracker:issue-view" issue.id %}" class="btn btn-primary">Детальный просмотр</a>
               </div>
             </div>
           </div>

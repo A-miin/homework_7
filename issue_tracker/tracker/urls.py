@@ -13,6 +13,7 @@ from tracker.views import (
     ProjectDeleteView,
 )
 
+app_name='tracker'
 urlpatterns=[
     path('',IndexProjectView.as_view() , name = 'project-list'),
     path('project/<int:pk>',ProjectView.as_view() , name = 'project-view'),
