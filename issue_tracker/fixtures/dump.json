@@ -138,14 +138,237 @@
   "model": "tracker.issue",
   "pk": 25,
   "fields": {
-    "summary": "Тз дипломка",
-    "description": "aeg lkn",
+    "summary": "Тз дипломкаfwegew",
+    "description": "aeg lkn newnew",
     "status": 3,
     "project": 2,
     "created_at": "2021-03-29T12:07:03.329Z",
-    "updated_at": "2021-03-29T12:07:03.713Z",
+    "updated_at": "2021-04-07T07:20:21.993Z",
     "type": [
       1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 27,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "'l, lkn",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:09:21.277Z",
+    "updated_at": "2021-04-06T13:09:21.470Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 28,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "'l, lkn",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:09:35.650Z",
+    "updated_at": "2021-04-06T13:09:35.893Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 29,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "'l, lkn",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:10:12.411Z",
+    "updated_at": "2021-04-06T13:10:12.627Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 30,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "'l, lkn",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:11:06.257Z",
+    "updated_at": "2021-04-06T13:11:06.474Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 31,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "jhcrb jrevjb",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:25:35.003Z",
+    "updated_at": "2021-04-06T13:25:35.327Z",
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 32,
+  "fields": {
+    "summary": "Тз дипломка",
+    "description": "jhcrb jrevjb",
+    "status": 2,
+    "project": 2,
+    "created_at": "2021-04-06T13:27:41.608Z",
+    "updated_at": "2021-04-06T13:27:41.900Z",
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 34,
+  "fields": {
+    "summary": "Исправить базу",
+    "description": "'l'lm l;m",
+    "status": 2,
+    "project": 14,
+    "created_at": "2021-04-06T13:35:07.378Z",
+    "updated_at": "2021-04-06T13:35:07.677Z",
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 36,
+  "fields": {
+    "summary": "ffefef f",
+    "description": "df fefe",
+    "status": 3,
+    "project": 16,
+    "created_at": "2021-04-06T14:09:05.154Z",
+    "updated_at": "2021-04-06T14:16:40.343Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 37,
+  "fields": {
+    "summary": "scs",
+    "description": "sscs fdsfs",
+    "status": 3,
+    "project": 2,
+    "created_at": "2021-04-06T14:09:49.507Z",
+    "updated_at": "2021-04-06T14:09:49.507Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 38,
+  "fields": {
+    "summary": "scs",
+    "description": "sscs fdsfs",
+    "status": 3,
+    "project": 2,
+    "created_at": "2021-04-06T14:12:58.596Z",
+    "updated_at": "2021-04-06T14:12:58.596Z",
+    "type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 39,
+  "fields": {
+    "summary": "Исправить базу",
+    "description": "jg kjg",
+    "status": 3,
+    "project": 2,
+    "created_at": "2021-04-06T14:13:26.153Z",
+    "updated_at": "2021-04-06T14:13:26.153Z",
+    "type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 40,
+  "fields": {
+    "summary": "Ошибка в базе",
+    "description": "'lm;l ;lm",
+    "status": 3,
+    "project": 16,
+    "created_at": "2021-04-06T14:16:27.825Z",
+    "updated_at": "2021-04-06T14:16:27.825Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 41,
+  "fields": {
+    "summary": "Ошибка в базе",
+    "description": "greh grg",
+    "status": 1,
+    "project": 16,
+    "created_at": "2021-04-07T07:25:43.012Z",
+    "updated_at": "2021-04-07T07:25:43.012Z",
+    "type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 42,
+  "fields": {
+    "summary": "Ошибка в базе",
+    "description": "greh grg",
+    "status": 1,
+    "project": 16,
+    "created_at": "2021-04-07T07:25:43.526Z",
+    "updated_at": "2021-04-07T07:25:43.526Z",
+    "type": [
       2,
       3
     ]
@@ -191,8 +414,8 @@
     "begin_date": "2020-09-14",
     "end_date": "2021-08-01",
     "name": "Амин516",
-    "description": ";l,",
-    "is_deleted": false
+    "description": "new descl",
+    "is_deleted": true
   }
 },
 {
@@ -218,11 +441,66 @@
   }
 },
 {
+  "model": "tracker.project",
+  "pk": 14,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "Окрошка",
+    "description": "l,",
+    "is_deleted": true
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 15,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "new",
+    "description": "l;m new",
+    "is_deleted": true
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 16,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "new",
+    "description": "new",
+    "is_deleted": false
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 17,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "new new",
+    "description": "new",
+    "is_deleted": false
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 18,
+  "fields": {
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "gmdfrkbr",
+    "description": "ff[[f f[f[[f[f",
+    "is_deleted": true
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$lcRel05LuNnh$AJAimTQaFt12x1xBPbKi/WI6+00nt4qH6EM7792IyCY=",
-    "last_login": "2021-04-01T12:41:10.746Z",
+    "last_login": "2021-04-12T10:52:55.237Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -231,6 +509,96 @@
     "is_staff": true,
     "is_active": true,
     "date_joined": "2021-03-11T08:16:12.944Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$6fIwQxPlyI6x$7B5T07UWW7rvykekio7rEmVDdgLwPZ3D7uw1dX3aIeM=",
+    "last_login": "2021-04-09T16:36:09.803Z",
+    "is_superuser": false,
+    "username": "amin",
+    "first_name": "AAAMin",
+    "last_name": "MAAM",
+    "email": "zulaykaisaeva@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-09T16:36:09.448Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$NVWpYEvqUbO7$cQHw8M0MZ4iCeoOkOUKrfbKzbaohguJIEzwKKUU9XEI=",
+    "last_login": "2021-04-09T16:40:05.047Z",
+    "is_superuser": false,
+    "username": "zulayka",
+    "first_name": "AAAMin",
+    "last_name": "",
+    "email": "zulaykaisaeva@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-09T16:40:04.695Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$euxzZgxVWv17$5wEp3czoWR0Tj5kMnFPQzCipL729/hC+AlMs7aSeUQ4=",
+    "last_login": "2021-04-09T16:41:21.439Z",
+    "is_superuser": false,
+    "username": "zulayka1",
+    "first_name": "",
+    "last_name": "MAAM",
+    "email": "1604.01008@manas.edu.kg",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-09T16:41:21.123Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$M5KMvCnaUOj0$4LY58XwkIKhBBTHIQdqDM/uJECMwq/wgjEOqp/VpcxM=",
+    "last_login": "2021-04-09T16:44:17.792Z",
+    "is_superuser": false,
+    "username": "amin1",
+    "first_name": "AAAMin",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-09T16:44:17.462Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$O1t800lnLZ69$gJL6y1ryHRFTjAhJP3IMTO70qppcA65GwtBeP/ZUxfI=",
+    "last_login": "2021-04-09T16:57:54.107Z",
+    "is_superuser": false,
+    "username": "kutman",
+    "first_name": "Kutman-bey",
+    "last_name": "Tash",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-09T16:57:53.796Z",
     "groups": [],
     "user_permissions": []
   }
