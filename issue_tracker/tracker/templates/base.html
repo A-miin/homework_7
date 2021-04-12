@@ -24,12 +24,16 @@
                 {% block nav %}
                 {% endblock nav %}
                 <li class="nav-item">
-                <a class="nav-link active" href="{% url "accounts:logout" %}"?next="{{ request.get_full_path }}">Logout</a>
+                <a class="nav-link active" href="{% url "accounts:logout" %}?next={{ request.get_full_path }}">Logout</a>
               </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link active" href="{% url "accounts:login" %}"?next="{{ request.get_full_path }}">Вход</a>
+                <a class="nav-link active" href="{% url "accounts:login" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Вход</a>
               </li>
+                 <li class="nav-item">
+                <a class="nav-link active" href="{% url 'accounts:register'%}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Зарегистрироваться</a>
+              </li>
+{#  
             {% endif %}
             </ul>
         </nav>

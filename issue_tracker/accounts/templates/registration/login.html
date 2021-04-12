@@ -29,6 +29,7 @@
         </div>
         <button type="submit">Войти</button>
     </form>
+    <a href="{% url 'accounts:register' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" class="text-center">Зарегистрироваться</a>
 </div>
 </body>
 </html>
