@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 from .validators import MinLengthValidator, validate_string, validate_words, validate_words_count
 
 
@@ -46,6 +46,7 @@ class Project(models.Model):
     begin_date = models.DateField(verbose_name="Дата начала")
     end_date = models.DateField(verbose_name="Дата конца", null=True, blank=True)
     name = models.CharField(max_length=120, verbose_name="Название")
+    user = models.ManyToManyField(get_user_model(), related_name='projects', verbose_name='Пользователь')
     description = models.TextField(max_length=3072, verbose_name="Описание")
     is_deleted = models.BooleanField(default=False)
 

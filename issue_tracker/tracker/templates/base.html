@@ -28,10 +28,10 @@
               </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link active" href="{% url "accounts:login" %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Вход</a>
+                <a class="nav-link active" href="{% url "accounts:login" %}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Вход</a>
               </li>
                  <li class="nav-item">
-                <a class="nav-link active" href="{% url 'accounts:register'%}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">Зарегистрироваться</a>
+                <a class="nav-link active" href="{% url 'accounts:register'%}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Зарегистрироваться</a>
               </li>
             {% endif %}
             </ul>
