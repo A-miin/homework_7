@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404,redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.views.generic import (
     ListView,
     DetailView,
@@ -87,11 +87,16 @@ class IndexProjectView(ListView):
     # def get_success_url(self):
     #     return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
 
-class ProjectUserUpdateView(UpdateView):
+class ProjectUserUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'tracker.change_project'
     form_class = ProjectUserForm2
     model=Project
     template_name = 'user/update.html'
     context_object_name = 'project'
+
+    # def has_permission(self):
+    #
+    #     return super().has_permission() and
 
     def get_form(self, form_class=None):
         if form_class is None:
@@ -108,7 +113,8 @@ class ProjectUserUpdateView(UpdateView):
         return queryset
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'tracker.change_project'
     form_class = ProjectForm
     model = Project
     template_name = 'project/update.html'
@@ -127,7 +133,8 @@ class ProjectView(DetailView):
     queryset = Project.objects.filter(is_deleted=False)
     context_object_name = 'project'
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'tracker.add_project'
     template_name = 'project/create.html'
     model = Project
     form_class = ProjectForm
@@ -144,7 +151,8 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
 
 
 
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'tracker.delete_project'
     template_name = 'project/delete.html'
     model = Project
     context_object_name = 'project'

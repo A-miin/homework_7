@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 # from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
 from django.views.generic import (
     View,
     TemplateView,
@@ -64,10 +66,17 @@ class IssueView(DetailView):
     queryset = Issue.objects.all()
     context_object_name = 'issue'
 
-class IssueCreateView(LoginRequiredMixin, CreateView):
+class IssueCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'tracker.add_issue'
     template_name = 'issue/create.html'
     model = Issue
     form_class = IssueForm
+
+    def has_permission(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        print(f'super().has_permission()={super().has_permission()}')
+        print(f'(self.request.user in project.user.all()={(self.request.user in project.user.all())}')
+        return super().has_permission() and (self.request.user in project.user.all())
 
     def form_valid(self, form):
         project = get_object_or_404(Project, id=self.kwargs.get('pk'))
@@ -84,7 +93,11 @@ class IssueCreateView(LoginRequiredMixin, CreateView):
         return redirect('tracker:issue-view', pk = self.issue.id)
 
 
-class IssueUpdateView(LoginRequiredMixin,UpdateView):
+class IssueUpdateView(PermissionRequiredMixin,UpdateView):
+    def has_permission(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        return super().has_permission() and (self.request.user in project.user.all())
+    permission_required = 'tracker.change_issue'
     form_class = IssueForm
     template_name = 'issue/update.html'
     model = Issue
@@ -93,11 +106,14 @@ class IssueUpdateView(LoginRequiredMixin,UpdateView):
     def get_success_url(self):
         return reverse('tracker:issue-view', kwargs={'pk': self.object.pk})
 
-class IssueDeleteView(LoginRequiredMixin,DeleteView):
+class IssueDeleteView(PermissionRequiredMixin,DeleteView):
+    permission_required = 'tracker.delete_issue'
     model = Issue
     template_name = 'issue/delete.html'
     context_object_name = 'issue'
-
+    def has_permission(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        return super().has_permission() and (self.request.user in project.user.all())
     def get_success_url(self):
         print(self.object.project.pk)
         return reverse('tracker:project-view', kwargs={'pk':self.object.project.pk})
