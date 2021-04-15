@@ -62,6 +62,13 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
 
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        self.object = form.save()
+        self.object.user.set([self.request.user])
+        self.object.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
 
