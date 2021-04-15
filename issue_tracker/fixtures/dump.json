@@ -382,7 +382,11 @@
     "end_date": "2021-07-08",
     "name": "Как закончить универ",
     "description": "Задачи для ежедневных нервных срывов&bsfbs",
-    "is_deleted": false
+    "is_deleted": false,
+    "user": [
+      1,
+      6
+    ]
   }
 },
 {
@@ -393,7 +397,10 @@
     "end_date": "2021-08-01",
     "name": "Как закончить курсы",
     "description": "Задачи",
-    "is_deleted": false
+    "is_deleted": false,
+    "user": [
+      6
+    ]
   }
 },
 {
@@ -404,7 +411,8 @@
     "end_date": "2021-08-01",
     "name": "Амин",
     "description": ";l,",
-    "is_deleted": false
+    "is_deleted": false,
+    "user": []
   }
 },
 {
@@ -415,7 +423,8 @@
     "end_date": "2021-08-01",
     "name": "Амин516",
     "description": "new descl",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
@@ -426,7 +435,8 @@
     "end_date": "2021-08-01",
     "name": "Амин 1",
     "description": ";l,",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
@@ -437,7 +447,8 @@
     "end_date": null,
     "name": "Вася",
     "description": "kjkbjb",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
@@ -448,7 +459,8 @@
     "end_date": null,
     "name": "Окрошка",
     "description": "l,",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
@@ -459,7 +471,8 @@
     "end_date": null,
     "name": "new",
     "description": "l;m new",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
@@ -470,7 +483,8 @@
     "end_date": null,
     "name": "new",
     "description": "new",
-    "is_deleted": false
+    "is_deleted": false,
+    "user": []
   }
 },
 {
@@ -481,7 +495,8 @@
     "end_date": null,
     "name": "new new",
     "description": "new",
-    "is_deleted": false
+    "is_deleted": false,
+    "user": []
   }
 },
 {
@@ -492,115 +507,37 @@
     "end_date": null,
     "name": "gmdfrkbr",
     "description": "ff[[f f[f[[f[f",
-    "is_deleted": true
+    "is_deleted": true,
+    "user": []
   }
 },
 {
-  "model": "auth.user",
-  "pk": 1,
+  "model": "tracker.project",
+  "pk": 19,
   "fields": {
-    "password": "pbkdf2_sha256$216000$lcRel05LuNnh$AJAimTQaFt12x1xBPbKi/WI6+00nt4qH6EM7792IyCY=",
-    "last_login": "2021-04-12T10:52:55.237Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-03-11T08:16:12.944Z",
-    "groups": [],
-    "user_permissions": []
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "Окрошка",
+    "description": "new",
+    "is_deleted": false,
+    "user": [
+      1
+    ]
   }
 },
 {
-  "model": "auth.user",
-  "pk": 2,
+  "model": "tracker.project",
+  "pk": 20,
   "fields": {
-    "password": "pbkdf2_sha256$216000$6fIwQxPlyI6x$7B5T07UWW7rvykekio7rEmVDdgLwPZ3D7uw1dX3aIeM=",
-    "last_login": "2021-04-09T16:36:09.803Z",
-    "is_superuser": false,
-    "username": "amin",
-    "first_name": "AAAMin",
-    "last_name": "MAAM",
-    "email": "zulaykaisaeva@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-04-09T16:36:09.448Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 3,
-  "fields": {
-    "password": "pbkdf2_sha256$216000$NVWpYEvqUbO7$cQHw8M0MZ4iCeoOkOUKrfbKzbaohguJIEzwKKUU9XEI=",
-    "last_login": "2021-04-09T16:40:05.047Z",
-    "is_superuser": false,
-    "username": "zulayka",
-    "first_name": "AAAMin",
-    "last_name": "",
-    "email": "zulaykaisaeva@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-04-09T16:40:04.695Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 4,
-  "fields": {
-    "password": "pbkdf2_sha256$216000$euxzZgxVWv17$5wEp3czoWR0Tj5kMnFPQzCipL729/hC+AlMs7aSeUQ4=",
-    "last_login": "2021-04-09T16:41:21.439Z",
-    "is_superuser": false,
-    "username": "zulayka1",
-    "first_name": "",
-    "last_name": "MAAM",
-    "email": "1604.01008@manas.edu.kg",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-04-09T16:41:21.123Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 5,
-  "fields": {
-    "password": "pbkdf2_sha256$216000$M5KMvCnaUOj0$4LY58XwkIKhBBTHIQdqDM/uJECMwq/wgjEOqp/VpcxM=",
-    "last_login": "2021-04-09T16:44:17.792Z",
-    "is_superuser": false,
-    "username": "amin1",
-    "first_name": "AAAMin",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-04-09T16:44:17.462Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 6,
-  "fields": {
-    "password": "pbkdf2_sha256$216000$O1t800lnLZ69$gJL6y1ryHRFTjAhJP3IMTO70qppcA65GwtBeP/ZUxfI=",
-    "last_login": "2021-04-09T16:57:54.107Z",
-    "is_superuser": false,
-    "username": "kutman",
-    "first_name": "Kutman-bey",
-    "last_name": "Tash",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-04-09T16:57:53.796Z",
-    "groups": [],
-    "user_permissions": []
+    "begin_date": "2020-09-14",
+    "end_date": null,
+    "name": "manytomany",
+    "description": "lknl",
+    "is_deleted": false,
+    "user": [
+      6,
+      7
+    ]
   }
 }
 ]
