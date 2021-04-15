@@ -1,5 +1,5 @@
 from django import forms
-from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 from .models import Issue, Type, Project
 
@@ -16,3 +16,16 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model=Project
         fields=('name', 'description', 'begin_date', 'end_date')
+
+class ProjectUserForm(forms.Form):
+    user = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=User.objects.all(),label="Пользователи")
+
+class ProjectUserForm2(forms.ModelForm):
+    user = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=User.objects.all(),label="Пользователи")
+
+    def __init__(self,request, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user'].queryset = User.objects.all().exclude(username=request.user.username)
+    class Meta:
+        model=Project
+        fields=('user',)

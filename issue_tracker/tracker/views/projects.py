@@ -1,19 +1,21 @@
-# from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    View, FormView
 )
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from tracker.models import Issue, Project
-from tracker.forms import IssueForm, SearchForm, ProjectForm
+from tracker.models import  Project
+from tracker.forms import SearchForm, ProjectForm, ProjectUserForm, ProjectUserForm2
 
 
 # Create your views here.
@@ -51,6 +53,74 @@ class IndexProjectView(ListView):
 
         return context
 
+# class ProjectUserUpdateView(View):
+#     template_name = 'user/update.html'
+#     print('heey')
+#     form = ProjectUserForm2()
+#     project = None
+#     def get(self,request, *args, **kwargs):
+#         self.project=get_object_or_404(Project, id=kwargs.get('pk'))
+#         # user=[user.id for user in self.project.user.all()]
+#         # print(user)
+#         self.form = ProjectUserForm2(initial=self.project)
+#         return render(request,self.template_name, context={'form':self.form,'project':self.project})
+#
+#     def post(self, request, *args, **kwargs):
+#         self.project = get_object_or_404(Project, id=kwargs.get('pk'))
+#         users=[]
+#         for user in request.POST.getlist('user'):
+#             users.append(get_object_or_404(User, id=user))
+#         self.project.user.set(users)
+#         self.project.save()
+#         print(self.project)
+#         print(self.project.user.all())
+#         return redirect('tracker:project-view', pk=self.project.pk)
+
+
+    # def form_valid(self, form):
+    #     print('form=',form)
+    #     self.object = get_object_or_404(Project,id=self.kwargs.get('pk'))
+    #     # self.object.user.set([self.request.user])
+    #     self.object.save()
+    #     return super().form_valid(form)
+    #
+    # def get_success_url(self):
+    #     return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
+
+class ProjectUserUpdateView(UpdateView):
+    form_class = ProjectUserForm2
+    model=Project
+    template_name = 'user/update.html'
+    context_object_name = 'project'
+
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+        return form_class(self.request, **self.get_form_kwargs())
+
+
+    def get_success_url(self):
+        return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_deleted=False)
+        return queryset
+
+
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+    form_class = ProjectForm
+    model = Project
+    template_name = 'project/update.html'
+    context_object_name = 'project'
+
+    def get_success_url(self):
+        return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_deleted=False)
+        return queryset
 
 class ProjectView(DetailView):
     template_name = 'project/view.html'
@@ -72,19 +142,7 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
-    form_class = ProjectForm
-    model = Project
-    template_name = 'project/update.html'
-    context_object_name = 'project'
 
-    def get_success_url(self):
-        return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(is_deleted=False)
-        return queryset
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'project/delete.html'
@@ -103,3 +161,6 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
         queryset = super().get_queryset()
         queryset = queryset.filter(is_deleted=False)
         return queryset
+
+
+

@@ -11,6 +11,7 @@ from tracker.views import (
     ProjectCreateView,
     ProjectUpdateView,
     ProjectDeleteView,
+    ProjectUserUpdateView,
 )
 
 app_name='tracker'
@@ -25,5 +26,6 @@ urlpatterns=[
     path('issue/<int:pk>/new',IssueCreateView.as_view(), name = 'issue-create' ),
     path('issue/<int:pk>/edit',IssueUpdateView.as_view(), name='issue-update' ),
     path('issue/<int:pk>/delete', IssueDeleteView.as_view(), name ='issue-delete'),
+    path('project/<int:pk>/user/edit', ProjectUserUpdateView.as_view(), name='project-user-update' ),
 
 ]

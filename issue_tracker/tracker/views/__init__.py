@@ -4,6 +4,7 @@ from tracker.views.projects import (
     ProjectUpdateView,
     ProjectDeleteView,
     ProjectView,
+    ProjectUserUpdateView,
 )
 from tracker.views.issues import (
     IndexView,
