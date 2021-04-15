@@ -13,6 +13,7 @@ from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User, Group
 
 from tracker.models import  Project
 from tracker.forms import SearchForm, ProjectForm, ProjectUserForm, ProjectUserForm2
@@ -53,40 +54,6 @@ class IndexProjectView(ListView):
 
         return context
 
-# class ProjectUserUpdateView(View):
-#     template_name = 'user/update.html'
-#     print('heey')
-#     form = ProjectUserForm2()
-#     project = None
-#     def get(self,request, *args, **kwargs):
-#         self.project=get_object_or_404(Project, id=kwargs.get('pk'))
-#         # user=[user.id for user in self.project.user.all()]
-#         # print(user)
-#         self.form = ProjectUserForm2(initial=self.project)
-#         return render(request,self.template_name, context={'form':self.form,'project':self.project})
-#
-#     def post(self, request, *args, **kwargs):
-#         self.project = get_object_or_404(Project, id=kwargs.get('pk'))
-#         users=[]
-#         for user in request.POST.getlist('user'):
-#             users.append(get_object_or_404(User, id=user))
-#         self.project.user.set(users)
-#         self.project.save()
-#         print(self.project)
-#         print(self.project.user.all())
-#         return redirect('tracker:project-view', pk=self.project.pk)
-
-
-    # def form_valid(self, form):
-    #     print('form=',form)
-    #     self.object = get_object_or_404(Project,id=self.kwargs.get('pk'))
-    #     # self.object.user.set([self.request.user])
-    #     self.object.save()
-    #     return super().form_valid(form)
-    #
-    # def get_success_url(self):
-    #     return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
-
 class ProjectUserUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'tracker.change_project'
     form_class = ProjectUserForm2
@@ -94,9 +61,13 @@ class ProjectUserUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'user/update.html'
     context_object_name = 'project'
 
-    # def has_permission(self):
-    #
-    #     return super().has_permission() and
+    def has_permission(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        print(f'super().has_permission()={super().has_permission()}')
+        print(f'(self.request.user in project.user.all())={(self.request.user in project.user.all())}')
+
+        return super().has_permission() and (self.request.user in project.user.all())
+
 
     def get_form(self, form_class=None):
         if form_class is None:
@@ -119,6 +90,13 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     model = Project
     template_name = 'project/update.html'
     context_object_name = 'project'
+
+    def has_permission(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+
+        manager_group = Group.objects.get(name="Project Manager")
+        print(manager_group)
+        return super().has_permission() and manager_group in self.request.user.groups.all()
 
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk':self.object.pk})

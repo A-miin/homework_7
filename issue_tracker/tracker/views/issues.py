@@ -74,8 +74,6 @@ class IssueCreateView(PermissionRequiredMixin, CreateView):
 
     def has_permission(self):
         project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        print(f'super().has_permission()={super().has_permission()}')
-        print(f'(self.request.user in project.user.all()={(self.request.user in project.user.all())}')
         return super().has_permission() and (self.request.user in project.user.all())
 
     def form_valid(self, form):
@@ -95,8 +93,9 @@ class IssueCreateView(PermissionRequiredMixin, CreateView):
 
 class IssueUpdateView(PermissionRequiredMixin,UpdateView):
     def has_permission(self):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        return super().has_permission() and (self.request.user in project.user.all())
+        issue= get_object_or_404(Issue, id=self.kwargs.get('pk'))
+        return super().has_permission() and (self.request.user in issue.project.user.all())
+
     permission_required = 'tracker.change_issue'
     form_class = IssueForm
     template_name = 'issue/update.html'
@@ -112,8 +111,8 @@ class IssueDeleteView(PermissionRequiredMixin,DeleteView):
     template_name = 'issue/delete.html'
     context_object_name = 'issue'
     def has_permission(self):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        return super().has_permission() and (self.request.user in project.user.all())
+        issue = get_object_or_404(Issue, id=self.kwargs.get('pk'))
+        return super().has_permission() and (self.request.user in issue.project.user.all())
     def get_success_url(self):
         print(self.object.project.pk)
         return reverse('tracker:project-view', kwargs={'pk':self.object.project.pk})
