@@ -126,4 +126,4 @@ LOGIN_REDIRECT_URL='tracker:project-list'
 LOGOUT_REDIRECT_URL='accounts:login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-MEDIA_URL='/uploads'
+MEDIA_URL='/uploads/'
