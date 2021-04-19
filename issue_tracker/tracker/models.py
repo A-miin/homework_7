@@ -67,6 +67,9 @@ class Profile(models.Model):
     class Meta:
         verbose_name="Профиль"
         verbose_name_plural="Профили"
+        permissions=[
+            ('can_view_profiles','Can view profiles')
+        ]
 
     def __str__(self):
         return f'{self.user.get_full_name()} profile'

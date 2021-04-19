@@ -36,6 +36,7 @@
                       {% if user.is_authenticated %}
                         <li><a class="nav-link " href="{% url "accounts:logout" %}?next={{ request.get_full_path }}">Logout</a></li>
                         <li><a class="nav-link " href="{% url "accounts:profile" user.id %}">Profile</a></li>
+                        <li><a class="nav-link " href="{% url "accounts:users" %}">Users</a></li>
                       {% else %}
                         <li><a class="nav-link active" href="{% url "accounts:login" %}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Вход</a></li>
                         <li><a class="nav-link active" href="{% url 'accounts:register'%}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Зарегистрироваться</a></li>

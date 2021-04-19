@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
 from accounts.forms import UserRegisterForm
+
 
 def register_view(request, *args, **kwargs):
     if request.method=='POST':
@@ -38,3 +39,8 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         print('UserDetailView')
         return super().get_context_data(**kwargs)
 
+class UserListView(PermissionRequiredMixin,ListView):
+    permission_required = 'tracker.change_project'
+    template_name = 'users.html'
+    model = get_user_model()
+    context_object_name = 'users'
