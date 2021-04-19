@@ -3,30 +3,20 @@
 {% block content %}
     <div class=" row display-flex">
         <div class="col-md-4">
-            <img class="card-img-top" src="{% if user_object.profile.avatar  %}{{ user_object.profile.avatar.url }}{% else %}{% static "images/no-img.png" %}{% endif %}" alt="Card image cap">
+            <img class="card-img-top" style="height: 100%;" src="{% if user_object.profile.avatar  %}{{ user_object.profile.avatar.url }}{% else %}{% static "images/no-img.png" %}{% endif %}" alt="Card image cap">
         </div>
         <div class="col-md-8 p-4">
             <ul>
-                <li>Имя: {% if user_object.profile.user.get_full_name  %}{{ user_object.profile.user.get_full_name }}{% else %}Отсутсвует{% endif %}</li>
-                <li>Ссылка на гитхаб: <a href="{% if user_object.profile.githubLink  %}{{ user_object.profile.githubLink }}{% else %}#{% endif %}">{% if user_object.profile.githubLink  %}{{ user_object.githubLink }}{% else %}Отсутсвует{% endif %}</a></li>
+                <li>Логин: {% if user_object.username  %}{{ user_object.username }}{% else %}Отсутсвует{% endif %}</li>
+                <li>Ссылка на гитхаб: <a href="{% if user_object.profile.githubLink  %}{{ user_object.profile.githubLink }}{% else %}#{% endif %}">{% if user_object.profile.githubLink  %}{{ user_object.profile.githubLink }}{% else %}Отсутсвует{% endif %}</a></li>
                 <li>О себе: {% if user_object.profile.description %}{{ user_object.profile.description }}{% else %}Отсутсвует{% endif %}</li>
             </ul>
         </div>
     </div>
-{#    <div class="card" style="width: 18rem;">#}
-{#      <img class="card-img-top" src="{% if user_object.profile.avatar  %}{{ user_object.profile.avatar.url }}{% else %}{% static "images/no-img.png" %}{% endif %}" alt="Card image cap">#}
-{#      <div class="card-body">#}
-{#        <h5 class="card-title">Card title</h5>#}
-{#        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
-{#      </div>#}
-{#      <ul class="list-group list-group-flush">#}
-{#        <li class="list-group-item">Cras justo odio</li>#}
-{#        <li class="list-group-item">Dapibus ac facilisis in</li>#}
-{#        <li class="list-group-item">Vestibulum at eros</li>#}
-{#      </ul>#}
-{#      <div class="card-body">#}
-{#        <a href="#" class="card-link">Card link</a>#}
-{#        <a href="#" class="card-link">Another link</a>#}
-{#      </div>#}
-{#    </div>#}
+    {% if projects %}
+        <h3>Projects</h3>
+    {% include 'project/list.html' %}
+    {% else %}
+    <h3> No projects</h3>
+    {% endif %}
 {% endblock content %}

@@ -33,10 +33,11 @@ class ProfileInline(admin.StackedInline):
 class ProfileAdmin(UserAdmin):
     inlines = [ProfileInline]
 
+
+
 User=get_user_model()
 admin.site.unregister(User)
 admin.site.register(User, ProfileAdmin)
-
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(Type, TypeAdmin)
 admin.site.register(Status, StatusAdmin)
