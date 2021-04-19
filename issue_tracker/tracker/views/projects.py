@@ -92,11 +92,7 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     context_object_name = 'project'
 
     def has_permission(self):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-
-        manager_group = Group.objects.get(name="Project Manager")
-        print(manager_group)
-        return super().has_permission() and manager_group in self.request.user.groups.all()
+        return super().has_permission()
 
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk':self.object.pk})
