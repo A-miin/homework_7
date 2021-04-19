@@ -20,6 +20,7 @@ def register_view(request, *args, **kwargs):
     return render(request, 'registration/create.html', context={'form':form})
 
 class UserDetailView(LoginRequiredMixin, DetailView):
+
     model = get_user_model()
     template_name = 'user_view.html'
     context_object_name = 'user_object'
@@ -34,5 +35,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         kwargs['page_obj'] = page
         kwargs['projects'] = page.object_list
         kwargs['is_paginated']=page.has_other_pages()
+        print('UserDetailView')
         return super().get_context_data(**kwargs)
 

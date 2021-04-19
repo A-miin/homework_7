@@ -8,16 +8,6 @@
     {% else %}
         {% include "partial/search_form.html" %}
     {% endif %}
-        {% for project in projects %}
-          <div class="col-sm-6 mt-3 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ project.id }}.{{ project.begin_date }}-{{ project.end_date }}</h5>
-                <p class="card-text">{{ project.name }}</p>
-                 <a href="{% url "tracker:project-view" project.id %}" class="btn btn-primary">Детальный просмотр</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+        {% include 'project/list.html' %}
     </div>
 {% endblock content %}
