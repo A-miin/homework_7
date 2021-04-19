@@ -40,7 +40,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs)
 
 class UserListView(PermissionRequiredMixin,ListView):
-    permission_required = 'tracker.change_project'
+    permission_required = 'tracker.can_view_profiles'
     template_name = 'users.html'
     model = get_user_model()
     context_object_name = 'users'

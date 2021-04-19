@@ -53,6 +53,9 @@ class Project(models.Model):
     class Meta:
         verbose_name="Проект"
         verbose_name_plural = "Проекты"
+        permissions=[
+            ('can_update_members','Can update members')
+        ]
 
     def __str__(self):
         return f'{self.name}: {self.begin_date}/{self.end_date}'

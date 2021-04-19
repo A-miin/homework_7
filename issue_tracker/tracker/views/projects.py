@@ -55,7 +55,7 @@ class IndexProjectView(ListView):
         return context
 
 class ProjectUserUpdateView(PermissionRequiredMixin, UpdateView):
-    permission_required = 'tracker.change_project'
+    permission_required = 'tracker.can_update_members'
     form_class = ProjectUserForm2
     model=Project
     template_name = 'user/update.html'
