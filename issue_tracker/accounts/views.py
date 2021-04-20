@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 from accounts.models import Profile
-from accounts.forms import UserRegisterForm
+from accounts.forms import UserRegisterForm, UserChangeForm, ProfileChangeForm
 
 
 def register_view(request, *args, **kwargs):
@@ -45,3 +45,8 @@ class UserListView(PermissionRequiredMixin,ListView):
     template_name = 'users.html'
     model = get_user_model()
     context_object_name = 'users'
+
+# class UserChangeView(LoginRequiredMixin, UpdateView):
+#     model = get_user_model()
+#     form_class = UserChangeForm
+#     template_name = 'user_update.html'
