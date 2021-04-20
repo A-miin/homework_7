@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block nav %}
+    {% if can_update %}
+    `<li class="nav-item">
+        <a class="nav-link " href="{% url "accounts:profile-update" user_object.id %}">Update</a>
+      </li>
+    {% endif %}
+{% endblock nav %}
 {% block content %}
     <div class=" row display-flex">
         <div class="col-md-4">
@@ -8,7 +15,9 @@
         <div class="col-md-8 p-4">
             <ul>
                 <li>Логин: {% if user_object.username  %}{{ user_object.username }}{% else %}Отсутсвует{% endif %}</li>
-                <li>Ссылка на гитхаб: <a href="{% if user_object.profile.githubLink  %}{{ user_object.profile.githubLink }}{% else %}#{% endif %}">{% if user_object.profile.githubLink  %}{{ user_object.profile.githubLink }}{% else %}Отсутсвует{% endif %}</a></li>
+                <li>Имя: {% if user_object.first_name %}{{ user_object.first_name }}{% else %}Отсутсвует{% endif %}</li>
+                <li>Фамилия: {% if user_object.last_name %}{{ user_object.last_name }}{% else %}Отсутсвует{% endif %}</li>
+                <li>Ссылка на гитхаб: {% if user_object.profile.githubLink  %}<a href="{{ user_object.profile.githubLink }}">{{ user_object.profile.githubLink }}</a>{% else %}Отсутсвует{% endif %}</li>
                 <li>О себе: {% if user_object.profile.description %}{{ user_object.profile.description }}{% else %}Отсутсвует{% endif %}</li>
             </ul>
         </div>

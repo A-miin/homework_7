@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Update user profile</h1>
+    <form action="" method="POST">
+        {% include 'partial/form.html' with form=form field_only=True %}
+        {% include 'partial/form.html' with form=profile_form button_text="Update"  %}
+        <br>
+    </form>
+{% endblock content %}

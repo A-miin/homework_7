@@ -92,6 +92,7 @@ class IssueCreateView(PermissionRequiredMixin, CreateView):
 
 
 class IssueUpdateView(PermissionRequiredMixin,UpdateView):
+
     def has_permission(self):
         issue= get_object_or_404(Issue, id=self.kwargs.get('pk'))
         return super().has_permission() and (self.request.user in issue.project.user.all())

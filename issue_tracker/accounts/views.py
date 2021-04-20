@@ -36,6 +36,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         page = paginator.get_page(page_number)
         kwargs['page_obj'] = page
         kwargs['projects'] = page.object_list
+        kwargs['can_update'] = self.request.user==self.get_object()
         kwargs['is_paginated']=page.has_other_pages()
         print('UserDetailView')
         return super().get_context_data(**kwargs)
@@ -53,8 +54,7 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
     context_object_name = 'user_object'
     profile_form_class = ProfileChangeForm
 
-    def get_profile_form_class(self):
-        return self.profile_form_class
+    permission_required = 'accounts.change_issue'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -75,7 +75,7 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
         return self.form_invalid(user_form, profile_form)
 
     def form_valid(self, user_form, profile_form):
-        response = super().form_valid()
+        response = super().form_valid(user_form)
         profile_form.save()
         return response
 
@@ -88,7 +88,7 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
         if self.request.method == 'POST':
             form_kwargs['data'] = self.request.POST
             form_kwargs['files'] = self.request.FILES
-        return self.get_profile_form_class(**form_kwargs)
+        return self.profile_form_class(**form_kwargs)
 
     def get_success_url(self):
         return reverse('accounts:profile', kwargs={'pk':self.object.pk})
