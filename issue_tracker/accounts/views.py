@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.core.paginator import Paginator
 
 from django.views.generic import DetailView, ListView
-
+from accounts.models import Profile
 from accounts.forms import UserRegisterForm
 
 
@@ -14,6 +14,7 @@ def register_view(request, *args, **kwargs):
         form = UserRegisterForm(data=request.POST)
         if form.is_valid():
             user = form.save()
+            Profile.objects.create(user=user)
             login(request, user)
             return redirect('tracker:project-list')
     else:

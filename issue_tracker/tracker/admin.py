@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Type,Status, Issue, Project, Profile
+from .models import Type,Status, Issue, Project
+from accounts.models import Profile
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth import get_user_model
 
