@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 from django.views.generic import DetailView, ListView, UpdateView
 from accounts.models import Profile
-from accounts.forms import UserRegisterForm, UserChangeForm, ProfileChangeForm
+from accounts.forms import UserRegisterForm, UserChangeForm, ProfileChangeForm, PasswordUpdateForm
 
 
 def register_view(request, *args, **kwargs):
@@ -36,7 +36,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         page = paginator.get_page(page_number)
         kwargs['page_obj'] = page
         kwargs['projects'] = page.object_list
+        # can update?
         kwargs['can_update'] = self.request.user==self.get_object()
+
         kwargs['is_paginated']=page.has_other_pages()
         print('UserDetailView')
         return super().get_context_data(**kwargs)
@@ -54,7 +56,6 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
     context_object_name = 'user_object'
     profile_form_class = ProfileChangeForm
 
-    permission_required = 'accounts.change_issue'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -92,3 +93,14 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:profile', kwargs={'pk':self.object.pk})
+
+class UserPasswordUpdateView(LoginRequiredMixin,UpdateView):
+    model = get_user_model()
+    template_name = 'user_password_update.html'
+    form_class = PasswordUpdateForm
+    context_object_name = 'user_object'
+
+    def get_success_url(self):
+        return reverse('accounts:login')
+    def get_object(self, queryset=None):
+        return self.request.user
