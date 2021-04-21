@@ -21,7 +21,7 @@ def register_view(request, *args, **kwargs):
         form = UserRegisterForm()
     return render(request, 'registration/create.html', context={'form':form})
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(DetailView):
 
     model = get_user_model()
     template_name = 'user_view.html'
@@ -40,7 +40,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         kwargs['can_update'] = self.request.user==self.get_object()
 
         kwargs['is_paginated']=page.has_other_pages()
-        print('UserDetailView')
         return super().get_context_data(**kwargs)
 
 class UserListView(PermissionRequiredMixin,ListView):

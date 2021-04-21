@@ -14,16 +14,23 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{% url "tracker:project-list" %}">Project list</a>
               </li>
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link active" href="{% url "tracker:issue-list" %}">Issues list</a>
               </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link active" href="{% url "tracker:project-create" %}">New project</a>
+              {% if user.is_authenticated and perms.tracker.add_project %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "tracker:project-create" %}">New project</a>
               </li>
+              {% endif %}
+              {% if user.is_authenticated %}
                 {% block nav %}
                 {% endblock nav %}
-            {% endif %}
+              {% endif %}
+              {% if user.is_authenticated and perms.tracker.can_view_profiles %}
+              <li class="nav-item">
+                <a class="nav-link "  href="{% url "accounts:users" %}">Users</a>
+              </li>
+              {% endif %}
               <li class="nav-item">
                 <div class="dropdown">
                   <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,7 +43,6 @@
                       {% if user.is_authenticated %}
                         <li><a class="nav-link " href="{% url "accounts:logout" %}?next={{ request.get_full_path }}">Logout</a></li>
                         <li><a class="nav-link " href="{% url "accounts:profile" user.id %}">Profile</a></li>
-                        <li><a class="nav-link " href="{% url "accounts:users" %}">Users</a></li>
                       {% else %}
                         <li><a class="nav-link active" href="{% url "accounts:login" %}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Вход</a></li>
                         <li><a class="nav-link active" href="{% url 'accounts:register'%}{% if request.GET.next %}?next={{ request.GET.next }}{% else %}?next={{ request.get_full_path }}{% endif %}">Зарегистрироваться</a></li>

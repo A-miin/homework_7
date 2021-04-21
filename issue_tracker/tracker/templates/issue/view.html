@@ -8,8 +8,12 @@
       <div class="card-body mb-2 mt-2">
         <h5 class="card-title">{{ issue.summary}}</h5>
         <p class="card-text">{{ issue.description }}</p>
-        <a href="{% url 'tracker:issue-update' issue.id %}" class="card-link">Редактировать </a>
-        <a href="{% url 'tracker:issue-delete' issue.id %}" class="card-link text-danger">Удалить</a>
+        {% if user.is_authenticated and perms.tracker.change_issue %}
+            <a href="{% url 'tracker:issue-update' issue.id %}" class="card-link">Редактировать </a>
+        {% endif %}
+        {% if user.is_authenticated and perms.tracker.delete_issue %}
+            <a href="{% url 'tracker:issue-delete' issue.id %}" class="card-link text-danger">Удалить</a>
+        {% endif %}
       </div>
       <div class="card-footer text-muted">
 

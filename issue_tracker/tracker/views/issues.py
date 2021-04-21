@@ -115,6 +115,5 @@ class IssueDeleteView(PermissionRequiredMixin,DeleteView):
         issue = get_object_or_404(Issue, id=self.kwargs.get('pk'))
         return super().has_permission() and (self.request.user in issue.project.user.all())
     def get_success_url(self):
-        print(self.object.project.pk)
         return reverse('tracker:project-view', kwargs={'pk':self.object.project.pk})
 
