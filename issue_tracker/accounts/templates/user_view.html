@@ -3,10 +3,10 @@
 {% block nav %}
     {% if can_update %}
     <li class="nav-item">
-        <a class="nav-link " href="{% url "accounts:profile-update" user_object.id %}">Update</a>
+        <a class="nav-link " href="{% url "accounts:profile-update" %}">Update</a>
       </li>
     <li class="nav-item">
-        <a class="nav-link " href="{% url "accounts:password-update" user_object.id %}">Password</a>
+        <a class="nav-link " href="{% url "accounts:password-update" %}">Password</a>
       </li>
     {% endif %}
 {% endblock nav %}
